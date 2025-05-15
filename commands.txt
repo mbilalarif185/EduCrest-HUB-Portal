@@ -1,13 +1,13 @@
 
 git add .
 git commit -m "Form & Buttons Urls"
-git push origin master
+git push origin main
 
 On VPS Server
 
-cd /home/bestcarrentaldubai
+/home/educresthub.com/portal.educresthub.com/EduCrest-HUB-Portal
 git reset --hard
-git pull origin master
+git pull origin main
 rm -rf .next
 npm run build
 Run these if needed 
@@ -18,4 +18,4 @@ sudo systemctl start nginx
 sudo systemctl enable nginx
 
 "
-"pm2 restart my-next-app"
+"pm2 restart portal-app "

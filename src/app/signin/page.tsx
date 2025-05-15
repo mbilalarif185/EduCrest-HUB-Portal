@@ -2,7 +2,7 @@ import SingIn from "@/components/inner-pages/signin";
 import Wrapper from "@/layouts/Wrapper";
 
 export const metadata = {
-   title: "SingIn Edumint - Edumint LMS & Online Courses React Next js Template",
+   title: "SingIn EduCrest Hub ",
 };
 const page = () => {
    return (
