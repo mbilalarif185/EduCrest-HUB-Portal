@@ -79,7 +79,7 @@ const SinginForm = () => {
                <button type="submit" className="ed-btn btn-base w-100">Sing In</button>
             </div>
             <div className="col-12">
-               <span>Forgottem Your Password </span>
+               <span>Forgot your password? </span>
                <Link href="/signup"><strong>Signup</strong></Link>
             </div>
          </div>

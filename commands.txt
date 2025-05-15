@@ -19,3 +19,5 @@ sudo systemctl enable nginx
 
 "
 "pm2 restart portal-app "
+PORT=3001 pm2 start npm --name portal-app -- restart
+DATABASE_URL=postgresql://postgres:Cressoft%40786@portal.educresthub.com:5432/EduCrest_Migration
