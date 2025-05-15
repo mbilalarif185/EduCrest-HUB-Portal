@@ -1,0 +1,21 @@
+
+git add .
+git commit -m "Form & Buttons Urls"
+git push origin master
+
+On VPS Server
+
+cd /home/bestcarrentaldubai
+git reset --hard
+git pull origin master
+rm -rf .next
+npm run build
+Run these if needed 
+"
+sudo systemctl stop lsws
+sudo systemctl disable lsws
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+"
+"pm2 restart my-next-app"
