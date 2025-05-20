@@ -50,7 +50,7 @@ const CoursesPage = () => {
       level: "Medicine, Pharmacy, Nursing, Education, Environmental Science, and Social Sciences.",
       duration: "Ranked 61st in UK",
       enrolled: "Ranked 791–800 in QS World Ranking",
-      image_url: "/assets/img/Universities/keele.png",
+      image_url: "/assets/img/Universities/keele.webp",
     },
     {
       id: 2,
@@ -58,7 +58,7 @@ const CoursesPage = () => {
       level: "Business, Engineering, MBA",
       duration: "Ranked 95th in the UK",
       enrolled: "Ranked 1201–1500th in the QS World University Ranking",
-      image_url: "/assets/img/Universities/southwales.png",
+      image_url: "/assets/img/Universities/southwales.webp",
      
     },
     {
@@ -67,7 +67,7 @@ const CoursesPage = () => {
       level: "Health Sciences, Business, Law, Engineering, and Social Sciences.",
       duration: "Ranked 121st in UK",
       enrolled: "Ranked 500 - 600  in the QS World University Rankings ",
-      image_url:  "/assets/img/Universities/ARU.png",
+      image_url:  "/assets/img/Universities/ARU.webp",
       
     },
   ];
