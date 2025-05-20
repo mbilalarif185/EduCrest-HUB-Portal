@@ -1,5 +1,4 @@
-import HomeOne from "@/components/homes/home-one";
-import Signin from "@/components/inner-pages/signin";
+import Course from "@/components/search";
 import Wrapper from "@/layouts/Wrapper";
 
 export const metadata = {
@@ -8,7 +7,7 @@ export const metadata = {
 const page = () => {
   return (
     <Wrapper>
-      <Signin />
+      <Course />
     </Wrapper>
   )
 }
