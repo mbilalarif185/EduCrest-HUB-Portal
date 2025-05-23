@@ -42,7 +42,6 @@ const CoursesPage = () => {
     }
   };
 
-  // Static sample courses (shown before search)
   const defaultCourses = [
     {
       id: 1,
@@ -72,42 +71,6 @@ const CoursesPage = () => {
     },
   ];
   
-  
-  // const renderCard = (data: any, isSearchResult = false, index: number) => (
-  //   <div className="col-lg-4 col-md-6 col-sm-12 mb-4" key={isSearchResult ? `search-${index}` : data.id}>
-  //     <div className="edu-course course-style-3">
-  //       <div className="inner">
-  //         <div className="thumbnail">
-  //           <a href="#">
-  //             <img
-  //               src={isSearchResult ? data.image_url || "/assets/img/about/4.png" : data.image_url}
-  //               alt={data.title || data.university_name}
-  //             />
-  //           </a>
-  //         </div>
-  //         <div className="content">
-  //           <span className="course-level">
-  //             {isSearchResult ? "Accepts MOI" : data.level}
-  //           </span>
-  //           <h5 className="title">
-  //             <a href="#">{isSearchResult ? data.university_name : data.title}</a>
-  //           </h5>
-  //           <p className="description">
-  //             {/* Famous For : {data.famous_for} */}
-  //             {isSearchResult && data.famous_for && (
-  //               <>Famous For : {data.famous_for}</>
-  //             )}
-  //           </p>
-  //           <p className='ranking'>
-  //           {isSearchResult && data.ranking && (
-  //               <>Ranking: {data.ranking}</>
-  //             )}
-  //           </p>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
   const renderCard = (data: any, isSearchResult = false, index: number) => {
     return (
       <div className="col-lg-4 col-md-6 col-sm-12 mb-4" key={isSearchResult ? `search-${index}` : data.id}>
@@ -163,7 +126,6 @@ const CoursesPage = () => {
           Check MOI Acceptance
           </p>
 
-          {/* Search Field */}
           <form onSubmit={handleSearchSubmit} className="search-form mt-4">
             <input
               type="text"
@@ -175,7 +137,6 @@ const CoursesPage = () => {
             <button type="submit" className="btn btn-search">Search</button>
           </form>
 
-          {/* Error Message */}
           {error && <div className="error-message mt-3 text-danger">{error}</div>}
         </div>
       </div>
@@ -187,8 +148,7 @@ const CoursesPage = () => {
   </div>
 )}
 
-      {/* Display Cards */}
-      <div className="row mt-5">
+      {/* <div className="row mt-5">
         {hasSearched && searchResults.length > 0 ? (
           searchResults.map((uni, index) => renderCard(uni, true, index))
         ) : !hasSearched ? (
@@ -198,7 +158,21 @@ const CoursesPage = () => {
             <p>No universities found for the provided Pakistani university.</p>
           </div>
         )}
-      </div>
+      </div> */}
+      <div className="row mt-5">
+  {hasSearched && Array.isArray(searchResults) && searchResults.length > 0 ? (
+    searchResults.map((uni, index) => renderCard(uni, true, index))
+  ) : !hasSearched ? (
+    defaultCourses.map((course, index) => renderCard(course, false, index))
+  ) : (
+    <div className="col-12 text-center">
+      <p>No universities found for the provided Pakistani university.<br />
+    Please try searching using the full name. For example, 
+    instead of "QAU", try "Quaid e Azam University".</p>
+    </div>
+  )}
+</div>
+
     </div>
   );
 };
