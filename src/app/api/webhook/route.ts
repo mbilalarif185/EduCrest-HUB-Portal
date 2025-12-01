@@ -50,18 +50,19 @@ async function sendWhatsAppMessage(to: string, text: string) {
     body: JSON.stringify(payload),
   });
 }
-
-// Webhook verification (required by Meta)
 export async function GET(req: NextRequest) {
-  const url = req.nextUrl;
+  const url = new URL(req.url);
   const mode = url.searchParams.get("hub.mode");
   const token = url.searchParams.get("hub.verify_token");
   const challenge = url.searchParams.get("hub.challenge");
 
+  console.log("Verification Request:", { mode, token, challenge });
+
   if (mode === "subscribe" && token === process.env.WHATSAPP_VERIFY_TOKEN) {
-    console.log("Webhook verified successfully ✅");
+    console.log("✅ Webhook verified");
     return new Response(challenge, { status: 200 });
   }
 
+  console.log("❌ Forbidden: Invalid token or mode", { mode, token });
   return new Response("Forbidden", { status: 403 });
 }
