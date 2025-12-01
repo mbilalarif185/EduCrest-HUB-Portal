@@ -25,7 +25,6 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Function to send WhatsApp reply
 async function sendWhatsAppMessage(to: string, text: string) {
   const token = process.env.WHATSAPP_ACCESS_TOKEN;
   const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
@@ -41,7 +40,7 @@ async function sendWhatsAppMessage(to: string, text: string) {
     text: { body: text },
   };
 
-  await fetch(`https://graph.facebook.com/v22.0/${phoneNumberId}/messages`, {
+  const res = await fetch(`https://graph.facebook.com/v22.0/${phoneNumberId}/messages`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -49,7 +48,11 @@ async function sendWhatsAppMessage(to: string, text: string) {
     },
     body: JSON.stringify(payload),
   });
+
+  const data = await res.json();
+  console.log("💬 WhatsApp API response:", data); // <- new line
 }
+
 export async function GET(req: NextRequest) {
   const url = new URL(req.url);
   const mode = url.searchParams.get("hub.mode");
