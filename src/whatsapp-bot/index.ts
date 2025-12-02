@@ -14,53 +14,45 @@ const client = new Client({
   },
 });
 
-// 👉 Track users who already received a reply
-const repliedUsers = new Set<string>();
+// 👉 Flag: bot should ignore all messages before startup
+let botStarted = false;
 
-// Show QR code
+// QR
 client.on("qr", (qr) => {
   console.log("📸 Scan QR code below:");
   qrcode.generate(qr, { small: true });
 });
 
-// On bot ready
+// When bot is ready
 client.on("ready", () => {
   console.log("✅ WhatsApp Bot is ready and connected!");
+  botStarted = true; // Now bot will reply ONLY to new messages
 });
 
 // Message handler
 client.on("message", async (msg) => {
-  // ⛔ Ignore group messages
-  if (msg.from.includes("@g.us")) {
-    return;
-  }
+  // ⛔ Ignore messages received before bot started
+  if (!botStarted) return;
 
-  const userId = msg.from; // Like "9198xxxx@s.whatsapp.net"
-
-  // ⛔ Ignore old chats: if we already replied once, stop.
-  if (repliedUsers.has(userId)) {
-    return;
-  }
+  // ⛔ Ignore groups
+  if (msg.from.includes("@g.us")) return;
 
   const text = msg.body?.trim().toLowerCase() || "";
   if (!text) return;
 
-  console.log("📩 Message received:", text);
+  console.log("📩 New message received:", text);
 
-  // Match trigger keywords
+  // Check keyword triggers
   const match = replies.find((item) =>
     item.trigger.some((t) => text.includes(t.toLowerCase()))
   );
-
-  // Mark user as replied so bot never replies again to old chats
-  repliedUsers.add(userId);
 
   if (match) {
     await msg.reply(match.response);
     return;
   }
 
-  // 🔥 Fallback reply
+  // Fallback reply
   await msg.reply(
     "Please share a suitable time when you’re available so I can call you."
   );
