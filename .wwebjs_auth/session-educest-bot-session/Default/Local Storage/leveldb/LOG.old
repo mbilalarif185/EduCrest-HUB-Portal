@@ -1,0 +1,4 @@
+2025/12/02-15:30:30.002 5750 Creating DB D:\EduCrest\EDUCrest\educrest\.wwebjs_auth\session-educest-bot-session\Default\Local Storage\leveldb since it was missing.
+2025/12/02-15:30:30.019 5750 Reusing MANIFEST D:\EduCrest\EDUCrest\educrest\.wwebjs_auth\session-educest-bot-session\Default\Local Storage\leveldb/MANIFEST-000001
+2025/12/02-15:30:30.020 5750 Recovering log #3
+2025/12/02-15:30:30.021 5750 Reusing old log D:\EduCrest\EDUCrest\educrest\.wwebjs_auth\session-educest-bot-session\Default\Local Storage\leveldb/000003.log 

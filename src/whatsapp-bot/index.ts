@@ -14,22 +14,31 @@ const client = new Client({
   },
 });
 
+// Show QR
 client.on("qr", (qr) => {
   console.log("📸 Scan QR code below:");
   qrcode.generate(qr, { small: true });
 });
 
+// Bot ready
 client.on("ready", () => {
   console.log("✅ WhatsApp Bot is ready and connected!");
 });
 
+// Message handler
 client.on("message", async (msg) => {
-  const text = msg.body?.trim().toLowerCase() || "";
 
+  // ⛔ STOP the bot from replying inside groups
+  if (msg.from.includes("@g.us")) {
+    return;
+  }
+
+  const text = msg.body?.trim().toLowerCase() || "";
   if (!text) return;
 
   console.log("📩 Message received:", text);
 
+  // Match trigger keywords
   const match = replies.find((item) =>
     item.trigger.some((t) => text.includes(t.toLowerCase()))
   );
@@ -39,8 +48,10 @@ client.on("message", async (msg) => {
     return;
   }
 
-  // 🔥 New fallback message (your custom line)
-  await msg.reply("Please share a suitable time when you’re available so I can call you.");
+  // 🔥 Your custom fallback reply
+  await msg.reply(
+    "Please share a suitable time when you’re available so I can call you."
+  );
 });
 
 client.initialize();
