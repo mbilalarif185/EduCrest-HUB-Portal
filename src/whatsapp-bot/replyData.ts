@@ -22,5 +22,6 @@ export const replies: { trigger: string[]; response: string }[] = [
     trigger: ["3", "digital marketing"],
     response:
       "Digital Marketing Course:\n🔍 SEO, Google Ads, SMM\n⏳ Duration: 2 months\n💰 Fee: $149",
-  },
+  }
+
 ];

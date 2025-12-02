@@ -23,21 +23,24 @@ client.on("ready", () => {
   console.log("✅ WhatsApp Bot is ready and connected!");
 });
 
-// --- Message Handler ---
 client.on("message", async (msg) => {
-  const userMessage = msg.body.toLowerCase().trim();
-  console.log("📩 Message received:", userMessage);
+  const text = msg.body?.trim().toLowerCase() || "";
 
-  // find reply from replyData.ts
+  if (!text) return;
+
+  console.log("📩 Message received:", text);
+
   const match = replies.find((item) =>
-    item.trigger.some((t) => userMessage.includes(t.toLowerCase()))
+    item.trigger.some((t) => text.includes(t.toLowerCase()))
   );
 
   if (match) {
     await msg.reply(match.response);
-  } else {
-    await msg.reply("Thanks for your message! 😊 Please choose a course or say 'hello' to start.");
+    return;
   }
+
+  // 🔥 New fallback message (your custom line)
+  await msg.reply("Please share a suitable time when you’re available so I can call you.");
 });
 
 client.initialize();
