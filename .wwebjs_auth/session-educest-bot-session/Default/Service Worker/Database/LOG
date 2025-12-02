@@ -1,2 +1,3 @@
-2025/12/02-13:12:22.089 1bd8 Creating DB D:\EduCrest\EDUCrest\educrest\.wwebjs_auth\session-educest-bot-session\Default\Service Worker\Database since it was missing.
-2025/12/02-13:12:22.096 1bd8 Reusing MANIFEST D:\EduCrest\EDUCrest\educrest\.wwebjs_auth\session-educest-bot-session\Default\Service Worker\Database/MANIFEST-000001
+2025/12/02-13:36:03.971 2128 Reusing MANIFEST D:\EduCrest\EDUCrest\educrest\.wwebjs_auth\session-educest-bot-session\Default\Service Worker\Database/MANIFEST-000001
+2025/12/02-13:36:03.971 2128 Recovering log #3
+2025/12/02-13:36:03.972 2128 Reusing old log D:\EduCrest\EDUCrest\educrest\.wwebjs_auth\session-educest-bot-session\Default\Service Worker\Database/000003.log 

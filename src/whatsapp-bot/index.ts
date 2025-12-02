@@ -1,11 +1,12 @@
 import { Client, LocalAuth } from "whatsapp-web.js";
 import qrcode from "qrcode-terminal";
+import { replies } from "./replyData";
 
 console.log("🚀 Starting WhatsApp Bot...");
 
 const client = new Client({
   authStrategy: new LocalAuth({
-    clientId: "educest-bot-session", // will save session inside .wwebjs_auth
+    clientId: "educest-bot-session",
   }),
   puppeteer: {
     headless: true,
@@ -22,13 +23,20 @@ client.on("ready", () => {
   console.log("✅ WhatsApp Bot is ready and connected!");
 });
 
+// --- Message Handler ---
 client.on("message", async (msg) => {
-  console.log("📩 Message received:", msg.body);
+  const userMessage = msg.body.toLowerCase().trim();
+  console.log("📩 Message received:", userMessage);
 
-  if (msg.body.toLowerCase() === "hi" || msg.body.toLowerCase() === "hello") {
-    msg.reply("Hello! 👋 How can I help you today?");
+  // find reply from replyData.ts
+  const match = replies.find((item) =>
+    item.trigger.some((t) => userMessage.includes(t.toLowerCase()))
+  );
+
+  if (match) {
+    await msg.reply(match.response);
   } else {
-    msg.reply("Thanks for your message! 😊");
+    await msg.reply("Thanks for your message! 😊 Please choose a course or say 'hello' to start.");
   }
 });
 
