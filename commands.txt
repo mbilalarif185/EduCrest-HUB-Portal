@@ -25,3 +25,8 @@ PORT=3001 pm2 start npm --name portal-app -- restart
 DATABASE_URL=postgresql://postgres:Cressoft%40786@portal.educresthub.com:5432/EduCrest_Migration
 ar
 session "rm -rf .wwebjs_auth"
+
+pm2 stop whatsapp-bot
+rm -rf .wwebjs_auth
+npm run whatsapp   ← scan QR
+pm2 start whatsapp-bot

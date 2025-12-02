@@ -14,22 +14,31 @@ const client = new Client({
   },
 });
 
-// Show QR
+// 👉 Track users who already received a reply
+const repliedUsers = new Set<string>();
+
+// Show QR code
 client.on("qr", (qr) => {
   console.log("📸 Scan QR code below:");
   qrcode.generate(qr, { small: true });
 });
 
-// Bot ready
+// On bot ready
 client.on("ready", () => {
   console.log("✅ WhatsApp Bot is ready and connected!");
 });
 
 // Message handler
 client.on("message", async (msg) => {
-
-  // ⛔ STOP the bot from replying inside groups
+  // ⛔ Ignore group messages
   if (msg.from.includes("@g.us")) {
+    return;
+  }
+
+  const userId = msg.from; // Like "9198xxxx@s.whatsapp.net"
+
+  // ⛔ Ignore old chats: if we already replied once, stop.
+  if (repliedUsers.has(userId)) {
     return;
   }
 
@@ -43,15 +52,19 @@ client.on("message", async (msg) => {
     item.trigger.some((t) => text.includes(t.toLowerCase()))
   );
 
+  // Mark user as replied so bot never replies again to old chats
+  repliedUsers.add(userId);
+
   if (match) {
     await msg.reply(match.response);
     return;
   }
 
-  // 🔥 Your custom fallback reply
+  // 🔥 Fallback reply
   await msg.reply(
     "Please share a suitable time when you’re available so I can call you."
   );
 });
 
+// Start bot
 client.initialize();
