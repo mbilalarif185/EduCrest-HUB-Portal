@@ -1,7 +1,7 @@
 export const replies: { trigger: string[]; response: string }[] = [
   {
     trigger: ["hi", "hello", "hey"],
-    response: "Hello! 👋 How can I help you today?",
+    response: "Hello!  How can I help you today?",
   },
   {
     trigger: ["course", "courses", "course list"],
