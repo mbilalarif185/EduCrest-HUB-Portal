@@ -39,7 +39,7 @@ const FooterOne = () => {
                         <ul className="details">
                            <li><i className="fa fa-map-marker"></i> Phase 4, Bahria Town, Islamabad</li>
                         <li><i className="fa fa-envelope"></i><a href="mailto:info#educrestmigration.com">info@educrestmigration.com</a> </li>
-                           <li><i className="fa fa-phone"></i> <a href="https://wa.me/923195544050">+92 319 554 4050</a></li>
+                           <li><i className="fa fa-phone"></i> <a href="https://wa.me/923195544050">+92 336 8883556</a></li>
                         </ul>
                      </div>
                   </div>
