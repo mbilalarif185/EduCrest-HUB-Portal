@@ -16,7 +16,7 @@ const contact_list: DataType[] = [
       id: 1,
       icon: icon_1,
       title: "Phone",
-      desc: "+92 319 554 4050",
+      desc: "+92 336 8883556",
    },
    {
       id: 2,
